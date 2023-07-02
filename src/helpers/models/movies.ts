@@ -11,6 +11,7 @@ export interface IMovie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  imageUrl?: string;
   adult?: boolean;
   budget?: number;
   imdb_id?: string;
