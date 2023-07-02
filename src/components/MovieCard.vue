@@ -1,5 +1,5 @@
 <template>
-  <div class="movie-card card shadow">
+  <div class="movie-card card shadow-sm">
     <img :src="movie.backdrop_path" class="card-img-top" alt="movie poster" />
 
     <div class="card-body">
