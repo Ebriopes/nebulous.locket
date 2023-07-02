@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
+import { onBeforeMount } from 'vue';
+import { RouterView } from 'vue-router';
 import NavBar from './components/NavBar.vue';
+import MovieService from './services/MovieService';
+
+onBeforeMount(() => {
+  MovieService.authenticate();
+});
 </script>
 
 <template>

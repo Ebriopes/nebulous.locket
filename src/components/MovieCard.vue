@@ -1,6 +1,16 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import type { IMovie } from '@/helpers/models/movies';
+
+const props = defineProps<{ movie: IMovie }>();
+
+const showMore = ref(false);
+const date = ref(new Date(props.movie.release_date).toLocaleDateString());
+</script>
+
 <template>
   <div class="movie-card card shadow-sm">
-    <img :src="movie.backdrop_path" class="card-img-top" alt="movie poster" />
+    <img :src="movie.imageUrl" class="card-img-top" alt="movie poster" loading="lazy" />
 
     <div class="card-body">
       <h5 class="card-title">{{ movie.title }}</h5>
@@ -21,21 +31,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { IMovie } from 'src/helpers/models/movies';
-import { computed, ref } from 'vue';
-
-const props = defineProps<{ movie: IMovie }>();
-
-const date = computed(() => {
-  const dateObj = new Date(props.movie.release_date);
-
-  return dateObj.toLocaleDateString();
-});
-
-const showMore = ref(false);
-</script>
 
 <style lang="scss" scoped>
 .movie-card {
