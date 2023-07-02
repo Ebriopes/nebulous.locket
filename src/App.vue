@@ -10,12 +10,12 @@ import NavBar from './components/NavBar.vue';
 
   <main class="content">
     <RouterView />
-    <div class="test"></div>
   </main>
 </template>
 
 <style lang="scss" scoped>
 $navbar-height: 58px;
+$content-height: calc(100dvh - $navbar-height);
 
 #header {
   width: 100%;
@@ -23,7 +23,8 @@ $navbar-height: 58px;
 
 .content {
   overflow: auto;
-  min-height: calc(100dvh - $navbar-height);
-  max-height: calc(100dvh - $navbar-height);
+  min-height: $content-height;
+  height: $content-height;
+  max-height: $content-height;
 }
 </style>
