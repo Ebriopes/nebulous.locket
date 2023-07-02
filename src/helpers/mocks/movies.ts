@@ -91,7 +91,7 @@ export const ONE_MOVIE = {
   vote_count: 2247,
 };
 
-export const MOVIES = {
+export const MOVIE_LIST = {
   page: 1,
   results: [
     {
