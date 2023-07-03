@@ -27,7 +27,7 @@ const movies = computed<IMovie[]>(() => store.state.movies);
 
 <style lang="scss" scoped>
 .movies-list {
-  max-height: 50dvh;
+  // max-height: 50dvh;
   overflow: auto;
 }
 </style>

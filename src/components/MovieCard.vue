@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { IMovie } from '@/helpers/models/movies';
+import { RouterLink } from 'vue-router';
 
 const props = defineProps<{ movie: IMovie }>();
 
@@ -10,10 +11,14 @@ const date = ref(new Date(props.movie.release_date).toLocaleDateString());
 
 <template>
   <div class="movie-card card shadow-sm">
-    <img :src="movie.imageUrl" class="card-img-top" alt="movie poster" loading="lazy" />
+    <RouterLink :to="'/movieDetail/' + movie.id">
+      <img :src="movie.imageUrl" class="card-img-top" alt="movie poster" loading="lazy" />
+    </RouterLink>
 
     <div class="card-body">
-      <h5 class="card-title">{{ movie.title }}</h5>
+      <RouterLink :to="'/movieDetail/' + movie.id">
+        <h5 class="card-title">{{ movie.title }}</h5>
+      </RouterLink>
 
       <div class="overview" :class="showMore && 'show'">
         <p class="card-text">
