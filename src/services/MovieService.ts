@@ -60,17 +60,16 @@ class MovieService {
       });
   }
 
-  getConfiguration(credentials?: AxiosRequestConfig) {
-    return createAPIConnection.get('/configuration', credentials).then((res) => {
-      this.configuration = res.data;
-
-      return res;
-    });
-  }
-
   ///////////////////
   // ENDPOINTS
   ///////////////////
+
+  getGenres() {
+    return createAPIConnection.get('/genre/movie/list').then((res) => {
+      store.commit('setGenres', res.data.genres);
+    });
+  }
+
   getDiscoverMovies(credentials?: AxiosRequestConfig) {
     return createAPIConnection.get('/discover/movie', credentials).then(async (res) => {
       if (!this.configuration) {
@@ -85,6 +84,16 @@ class MovieService {
       }));
 
       store.commit('setMovies', moviesWithImage);
+
+      return res;
+    });
+  }
+
+  private getConfiguration(credentials?: AxiosRequestConfig) {
+    return createAPIConnection.get('/configuration', credentials).then((res) => {
+      this.configuration = res.data;
+
+      this.getGenres();
 
       return res;
     });
