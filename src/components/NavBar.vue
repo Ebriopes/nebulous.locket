@@ -1,14 +1,24 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { RouterLink } from 'vue-router';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+const title = computed(() => store.state.title);
+</script>
+
 <template>
   <nav id="navbar" class="navbar navbar-expand-lg bg-primary text-light">
     <div class="container-fluid">
       <section class="d-flex align-items-center navbar-section">
-        <a class="navbar-brand text-light" href="/">
+        <RouterLink class="navbar-brand text-light" to="/">
           <img src="@/assets/icons/universe.png" alt="Nebula logo" class="me-2 navbar-logo" />
           Nebulous
           <sub>
             <i>LOCKET</i>
           </sub>
-        </a>
+        </RouterLink>
       </section>
 
       <section class="navbar-section text-center">
@@ -34,12 +44,6 @@
     </div>
   </nav>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-const title = ref('Test title');
-</script>
 
 <style lang="scss" scoped>
 #navbar {
