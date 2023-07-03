@@ -13,7 +13,7 @@ a {
 @media (hover: hover) {
   a:hover {
     text-decoration: dashed;
-    font-weight: 900;
+    /* font-weight: 900; */
     color: hsla(160, 100%, 37%, 1) !important;
   }
 }

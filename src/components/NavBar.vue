@@ -22,7 +22,7 @@ const title = computed(() => store.state.title);
       </section>
 
       <section class="navbar-section text-center">
-        <h3 class="m-0 fw-bolder">{{ title }}</h3>
+        <h3 class="m-0 fw-bolder text-truncate">{{ title }}</h3>
       </section>
 
       <section class="navbar-section">

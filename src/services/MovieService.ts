@@ -1,5 +1,3 @@
-// import { getAuthToken } from "../helpers/utils";
-
 import type { AxiosRequestConfig } from 'axios';
 import type { IMovie, IMovieList } from '@/helpers/models';
 import { createAPIConnection } from '@/services/HttpService';
@@ -64,6 +62,20 @@ class MovieService {
   // ENDPOINTS
   ///////////////////
 
+  getMovie(movieId: string, credentials?: AxiosRequestConfig) {
+    return createAPIConnection.get('/movie/' + movieId, credentials).then(async (res) => {
+      if (!this.configuration) {
+        await this.getConfiguration();
+      }
+
+      const movie = res.data as IMovie;
+
+      movie.imageUrl = this.getUrlImage(movie.backdrop_path);
+
+      store.commit('setCurrentMovie', movie);
+    });
+  }
+
   getGenres() {
     return createAPIConnection.get('/genre/movie/list').then((res) => {
       store.commit('setGenres', res.data.genres);
@@ -80,7 +92,7 @@ class MovieService {
 
       const moviesWithImage = movies.map((movie: IMovie) => ({
         ...movie,
-        imageUrl: this.getUrlImage(movie.backdrop_path),
+        imageUrl: this.getUrlImage(movie.poster_path, false),
       }));
 
       store.commit('setMovies', moviesWithImage);
@@ -99,10 +111,12 @@ class MovieService {
     });
   }
 
-  private getUrlImage(path: string) {
-    const { base_url, backdrop_sizes } = this.configuration!.images;
+  private getUrlImage(path: string, useBackdrop = true) {
+    const { base_url, backdrop_sizes, poster_sizes } = this.configuration!.images;
 
-    return base_url + backdrop_sizes[0] + path;
+    const size = useBackdrop ? backdrop_sizes[2] : poster_sizes[3];
+
+    return base_url + size + path;
   }
 }
 

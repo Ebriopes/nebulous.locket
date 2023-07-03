@@ -29,17 +29,17 @@ export interface IMovie {
     poster_path: string;
     backdrop_path: string;
   };
+  production_companies?: {
+    id: number;
+    logo_path: string;
+    name: string;
+    origin_country: string;
+  }[];
   // spoken_languages?: {
   //   english_name: string;
   //   iso_number_number: string;
   //   name: string;
   // }[];
-  // production_companies?: [{
-  //   id: number;
-  //   logo_path: string;
-  //   name: string;
-  //   origin_country: string;
-  // }];
   // production_countries?: {
   //   iso_number_number: string;
   //   name: string;

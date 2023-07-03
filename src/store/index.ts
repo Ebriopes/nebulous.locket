@@ -19,6 +19,9 @@ export default createStore({
     setTitle(state: any, value: string) {
       state.title = value;
     },
+    setCurrentMovie(state: any, value: IMovie) {
+      state.currentMovie = value;
+    },
   },
   actions: {},
   modules: {},
