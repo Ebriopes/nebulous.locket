@@ -62,7 +62,7 @@ const revenue = computed(() =>
 
     <div class="card-footer">
       <span>Runtime: {{ props.movie.runtime }} minutes </span>
-      <small class="text-body-secondary float-end">{{ date }}</small>
+      <small class="text-body-secondary float-end">Release: {{ date }}</small>
     </div>
   </div>
 </template>
