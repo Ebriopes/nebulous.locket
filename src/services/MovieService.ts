@@ -88,14 +88,15 @@ class MovieService {
         await this.getConfiguration();
       }
 
-      const movies = (res.data as IMovieList).results;
+      const { results, page, total_pages } = res.data as IMovieList;
 
-      const moviesWithImage = movies.map((movie: IMovie) => ({
+      const moviesWithImage = results.map((movie: IMovie) => ({
         ...movie,
         imageUrl: this.getUrlImage(movie.poster_path, false),
       }));
 
       store.commit('setMovies', moviesWithImage);
+      store.commit('setPagination', { page, total_pages });
 
       return res;
     });

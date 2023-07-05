@@ -8,6 +8,7 @@ export default createStore({
     movies: [],
     currentMovie: {},
     genres: [],
+    pagination: {},
   },
   mutations: {
     setMovies(state: any, value: IMovie[]) {
@@ -21,6 +22,9 @@ export default createStore({
     },
     setCurrentMovie(state: any, value: IMovie) {
       state.currentMovie = value;
+    },
+    setPagination(state: any, value: { page: number; total_pages: number }) {
+      state.pagination = value;
     },
   },
   actions: {},
