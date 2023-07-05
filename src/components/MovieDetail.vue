@@ -51,7 +51,9 @@ const revenue = computed(() =>
       </article>
 
       <div class="d-flex justify-content-between align-items-end">
-        <a :href="props.movie.homepage" target="_blank">Visit the home page</a>
+        <a v-if="props.movie.homepage" :href="props.movie.homepage" target="_blank">
+          Visit the home page
+        </a>
 
         <div>
           <p>Budget: ${{ budget }}</p>

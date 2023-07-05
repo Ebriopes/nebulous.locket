@@ -30,8 +30,8 @@ const getMovies = (e: Event, filterName: string) => {
 
 <template>
   <h4 class="fs-2">Filter Section</h4>
-  <div class="d-flex justify-content-between gap-5">
-    <div class="input-group flex-grow-1">
+  <div class="d-flex flex-wrap justify-content-between column-gap-5 row-gap-2 mt-3">
+    <div class="input-group filter-input flex-grow-1">
       <label class="input-group-text" id="filter-year">Year</label>
       <select
         class="form-select"
@@ -44,7 +44,7 @@ const getMovies = (e: Event, filterName: string) => {
       </select>
     </div>
 
-    <div class="input-group flex-grow-1">
+    <div class="input-group filter-input flex-grow-1">
       <label class="input-group-text" id="filter-genre">genre</label>
       <select
         class="form-select"
@@ -57,3 +57,10 @@ const getMovies = (e: Event, filterName: string) => {
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.filter-input {
+  max-width: 250px;
+  margin-inline: auto;
+}
+</style>

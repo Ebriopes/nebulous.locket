@@ -39,7 +39,7 @@ const date = ref(new Date(props.movie.release_date).toLocaleDateString());
 
 <style lang="scss" scoped>
 .movie-card {
-  min-width: 10rem;
+  min-width: 12rem;
   height: fit-content;
 }
 
