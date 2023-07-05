@@ -6,7 +6,6 @@ import MovieService from '@/services/MovieService';
 
 interface IFilter {
   [key: string]: any;
-  include_adult: boolean;
   primary_release_year?: number;
   with_genres?: number;
 }
@@ -19,17 +18,8 @@ const years = new Array(50).fill(new Date().getFullYear()).map((year, index) => 
 
 const filters = reactive<IFilter>({
   primary_release_year: undefined,
-  include_adult: false,
   with_genres: undefined,
 });
-
-const buttonTrigger = () => {
-  const searchAdultContent = !filters.include_adult;
-
-  filters.include_adult = searchAdultContent;
-
-  MovieService.getDiscoverMovies({ params: { ...filters } });
-};
 
 const getMovies = (e: Event, filterName: string) => {
   filters[filterName] = +(e.target as HTMLSelectElement).value;
@@ -65,13 +55,5 @@ const getMovies = (e: Event, filterName: string) => {
         <option v-for="genre in genres" :value="genre.id" :key="genre.id">{{ genre.name }}</option>
       </select>
     </div>
-
-    <button
-      :class="filters.include_adult ? 'btn-danger' : ''"
-      class="btn btn-primary flex-shrink-0"
-      @click="buttonTrigger"
-    >
-      Adult content
-    </button>
   </div>
 </template>
